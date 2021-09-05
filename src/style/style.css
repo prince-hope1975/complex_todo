@@ -1,0 +1,106 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 1em;
+}
+
+nav {
+  min-height: 100vh;
+  border-right: 1px solid black;
+}
+
+input, select, option {
+  outline: none;
+  padding: 0.2em 0.7em;
+}
+
+.body {
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.bodyy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.addBtn {
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.mainContainer {
+  position: relative;
+  padding: 1rem;
+  z-index: 1;
+}
+.mainContainer div select {
+  position: absolute;
+  right: 10px;
+  top: 80%;
+}
+
+.low {
+  background: rgba(0, 0, 255, 0.4);
+}
+
+.high {
+  background: rgba(231, 185, 100, 0.5);
+}
+
+.urgent {
+  background: rgba(198, 16, 16, 0.5);
+}
+
+.deleteBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: none;
+  background: #ffa9a9;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-content: center;
+  font-size: 2rem;
+  z-index: 3;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 68%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-content: center;
+}
+
+.form {
+  position: relative;
+  width: clamp(100px,70vw, 400px);
+  background: #fffdfd;
+  margin: 50px;
+  height: clamp(60vh, 100vh);
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  padding: 1rem;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.visible {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

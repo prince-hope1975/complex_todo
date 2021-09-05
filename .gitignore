@@ -1,0 +1,8 @@
+node_modules
+tasks.json
+yarn-error.log
+extensions.json
+settings.json
+package-lock.json
+style.scss
+style.css.map
