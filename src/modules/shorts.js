@@ -3,7 +3,7 @@ export const getClassNode = (classItem) => {
   return item;
 };
 export const deleteBtn =()=>{
-const button =newNode("input");
+const button =newNode("button");
 
    button.innerHTML = "&times;";
    button.classList.add("deleteBtn");

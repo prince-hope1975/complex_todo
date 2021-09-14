@@ -11,11 +11,17 @@ import {
   allAttribute
 } from "./shorts";
 
-export const form = ((heading = "", content = "", priority = "") => {
+export const form = ((header,heading = "", content = "", priority = "") => {
+  const setValues=()=>{
+    
+  }
   const bodyy = getClassNode("body");
   // modal
   const modal = newNode("div");
+
   modal.classList.add("modal");
+  modal.classList.add("visible");
+
   // Form
   const form = newNode("form");
   form.classList.add("form");
@@ -31,7 +37,7 @@ export const form = ((heading = "", content = "", priority = "") => {
   const option = createSelect();
   addClass(btnSave, "save");
   addClass(btnCancel, "remove");
-  h3.textContent = "Add to todo";
+  h3.textContent = header||"Add to todo";
   title.value = heading;
   textInput.value = content;
   const titleWrap = labelWrap(title, "Task title");
@@ -39,13 +45,20 @@ export const form = ((heading = "", content = "", priority = "") => {
   const optionWrap = labelWrap(option,"Set Priority")
   const del = deleteBtn();
   // ! Remember to change this
-  // del.addEventListener("click",(e)=>{
-  //       console.log(e.target.value)
-  // })
+  del.addEventListener("click",(e)=>{
+    e.preventDefault();
+        console.log(e.target)
+        e.target.parentElement.parentElement.classList.toggle("visible");
+  })
+  let formValues = []
+  events(form, ()=>{
+   formValues = [title.value,textInput.value,option.value]
+  },"submit")
+  const getFormValues=()=>(formValues)
 
   //! The "wrap" function is used to append all the elements in the array to the main element
   wrap(form, [h3, titleWrap, textInputWrap, optionWrap, btnSave, btnCancel, del]);
   wrap(modal, [form]);
   wrap(bodyy, [modal]);
-  return { modal };
-})();
+  return { modal, getFormValues, form };
+});

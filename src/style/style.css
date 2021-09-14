@@ -1,7 +1,21 @@
 body {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: 0 1em;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 500px) {
+  body {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  body .body {
+    grid-row: span 1;
+    grid-column: span 2;
+  }
+  body .bodyy {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 nav {
@@ -12,17 +26,6 @@ nav {
 input, select, option {
   outline: none;
   padding: 0.2em 0.7em;
-}
-
-.body {
-  grid-row: span 1;
-  grid-column: span 2;
-}
-
-.bodyy {
-  position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .addBtn {
