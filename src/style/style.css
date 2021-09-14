@@ -106,4 +106,16 @@ input, select, option {
   display: none;
 }
 
+.projects {
+  position: relative;
+}
+.projects li :hover {
+  background: #807b7b;
+}
+.projects .projectsBtn {
+  position: absolute;
+  bottom: -20px;
+  width: clamp(20px,70%, 100px);
+}
+
 /*# sourceMappingURL=style.css.map */

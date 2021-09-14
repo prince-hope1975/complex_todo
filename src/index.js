@@ -1,6 +1,7 @@
 const bodyy = getClassNode("bodyy");
 const main = getClassNode("body");
-
+let array = [];
+import { Project } from "./projects";
 import {
   //   wrap,
   getClassNode,
@@ -9,6 +10,7 @@ import {
   toggleClass,
   createSelect,
   deleteBtn,
+  Btn,
   wrap,
 } from "./modules/shorts";
 import { form } from "./modules/components";
@@ -23,7 +25,7 @@ const TodoObject = (title, description, dueDate, priority, notes) => {
 };
 const addTask = () => {};
 
-const TodoItem = (heading = "", content = "", option) => {
+const TodoItem = (heading = "", content = "", option = "low") => {
   const container = newNode("div");
   const contentContainer = newNode("div");
   const Div = newNode("div");
@@ -32,11 +34,19 @@ const TodoItem = (heading = "", content = "", option) => {
   const p = newNode("p");
   const select = createSelect();
   const editBtn = newNode("button");
-  const Form = form("Edit Task");
+  const Form = form("Edit Task",heading, content, option);
   editBtn.textContent = "edit";
   events(editBtn, () => {
     toggleClass(Form.modal, "visible");
   });
+  events(Form.form,(e)=>{
+e.preventDefault()
+console.log(Form.getFormValues())
+const [title, content, priority] = Form.getFormValues()
+defaultConfig(title, content, priority)
+console.log(Form.form);
+ Form.modal.classList.toggle("visible");
+  },"submit")
   events(
     select,
     (e) => {
@@ -47,19 +57,22 @@ const TodoItem = (heading = "", content = "", option) => {
     "change"
   );
 
-  // events(button, () => toggleClass(container, "visible"));
   button.addEventListener("click", (e) => {
-    console.log(e.target);
-    e.target.parentElement.parentElement.parentElement.classList.add(
-      "visible"
-    );
+    let arr = array.filter((item, index) => {
+      return (
+        index != Number(e.target.parentElement.parentElement.parentElement.id)
+      );
+    });
+    array = arr;
+    addToList();
   });
 
   const defaultConfig = ((heading, content, option) => {
     h3.textContent = heading;
     p.textContent = content;
     select.value = option;
-  })(heading, content, option);
+  })
+  defaultConfig(heading, content, option);
   const editHeading = (val) => {
     h3.textContent = val;
   };
@@ -68,7 +81,7 @@ const TodoItem = (heading = "", content = "", option) => {
   };
 
   // TODO update component
-  const structureItems = (() => {
+  const card = (() => {
     container.appendChild(h3);
     contentContainer.appendChild(p);
 
@@ -79,7 +92,7 @@ const TodoItem = (heading = "", content = "", option) => {
     Div.appendChild(container);
     main.appendChild(Form.modal);
 
-    Div.classList.add("mainContainer");
+    Div.classList.add("mainContainer", option);
     return Div;
   })();
   const changePriority = () => {
@@ -88,7 +101,7 @@ const TodoItem = (heading = "", content = "", option) => {
   };
 
   return {
-    structureItems,
+    card,
     editContent,
     editHeading,
     changePriority,
@@ -97,15 +110,13 @@ const TodoItem = (heading = "", content = "", option) => {
 
 const Form = form();
 const addItems = (() => {
-  const addBtn = newNode("button");
-  addBtn.classList.add("addBtn");
-  addBtn.innerHTML = "&plus;";
-
+  const addBtn = Btn()
   events(addBtn, (e) => {
     e.preventDefault();
     toggleClass(Form.modal, "visible");
   });
   bodyy.appendChild(addBtn);
+  return {addBtn}
 })();
 
 events(
@@ -115,29 +126,40 @@ events(
     const [title, content, options] = Form.getFormValues();
     if (title && content && options) {
       const newProject = TodoItem(title, content, options);
-      console.log(newProject.structureItems);
-      bodyy.appendChild(newProject.structureItems);
+      addToList(newProject);
     }
     e.target.parentElement.classList.toggle("visible");
   },
   "submit"
 );
-const reducer =(val) =>{
-  switch (val){
-    case "TODAY": 
-      
+const reducer = (val) => {
+  switch (val) {
+    case "TODAY":
   }
-}
+};
 const newProject = TodoItem(
   "Hello World",
   "I'm going to cheange the world some day"
 );
-bodyy.appendChild(newProject.structureItems);
+bodyy.appendChild(newProject.card);
 
-const oldProject = TodoItem("Hello World", "I going to cheange", "low");
+const oldProject = TodoItem("Hello World", "I going to cheange", "high");
 
-bodyy.appendChild(oldProject.structureItems);
+bodyy.appendChild(oldProject.card);
 
-const addToList=()=>{
-  
-}
+// console.log(array);
+array = [...array, oldProject, newProject];
+
+const addToList = ((arr) => {
+  arr?array=[...array, arr]:array=array
+  bodyy.innerHTML=" "
+  array.forEach((item, index) => {
+    bodyy.appendChild(item.card);
+    item.card.id = index;
+    console.log(item.card.id);
+  });
+  bodyy.appendChild(addItems.addBtn)
+});
+
+
+Project()

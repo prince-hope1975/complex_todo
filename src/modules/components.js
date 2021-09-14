@@ -40,6 +40,7 @@ export const form = ((header,heading = "", content = "", priority = "") => {
   h3.textContent = header||"Add to todo";
   title.value = heading;
   textInput.value = content;
+  option.value= priority
   const titleWrap = labelWrap(title, "Task title");
   const textInputWrap = labelWrap(textInput, "Task Input");
   const optionWrap = labelWrap(option,"Set Priority")

@@ -38,7 +38,12 @@ export const allAttribute =(attribute, array,set=true)=>{
     item.setAttribute(attribute,set)
   })
 }
-
+export const Btn=() =>{
+  const addBtn = newNode("button");
+  addBtn.classList.add("addBtn");
+  addBtn.innerHTML = "&plus;";
+  return addBtn
+}
 
 export const createSelect = () => {
   const select = newNode("select");
