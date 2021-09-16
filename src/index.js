@@ -146,6 +146,7 @@ const newProject = TodoItem(
   "Hello World",
   "I'm going to cheange the world some day"
 );
+newProject.category=category
 bodyy.appendChild(newProject.card);
 
 const oldProject = TodoItem("Hello World", "I going to cheange", "high");
@@ -155,11 +156,13 @@ bodyy.appendChild(oldProject.card);
 // console.log(array);
 array = [...array, oldProject, newProject];
 
-const addToList = ((arr, category) => {
-  
-  arr?array=[...array, arr]:array=array
+const addToList = ((arr, category="inbox") => {
+ if (arr){ 
+   arr.category=category
+  array=[...array, arr]}
+  let Obj = array.filter((item)=>item.category===category)
   bodyy.innerHTML=" "
-  array.forEach((item, index) => {
+  Obj.forEach((item, index) => {
     item.category =category
     bodyy.appendChild(item.card);
     item.card.id = index;

@@ -58,9 +58,9 @@ export const Project = (text) => {
   projectContainer.appendChild(projctForm);
   li.addEventListener("click", (e)=>{
     changeCategory(text)
-    const newArr = [array[1]]
+    // const newArr = [array[1]]
     console.log(array)
-filterList(newArr)
+addToList(null, text)
   })
   return li
 };
