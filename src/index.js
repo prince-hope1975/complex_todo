@@ -1,6 +1,10 @@
 const bodyy = getClassNode("bodyy");
 const main = getClassNode("body");
 let array = [];
+let category= "inbox";
+export const changeCategory=(input)=>{
+category = input
+}
 import { Project } from "./projects";
 import {
   //   wrap,
@@ -126,9 +130,10 @@ events(
     const [title, content, options] = Form.getFormValues();
     if (title && content && options) {
       const newProject = TodoItem(title, content, options);
-      addToList(newProject);
+      addToList(newProject,category);
     }
     e.target.parentElement.classList.toggle("visible");
+    Form.clearInput()
   },
   "submit"
 );
@@ -150,16 +155,28 @@ bodyy.appendChild(oldProject.card);
 // console.log(array);
 array = [...array, oldProject, newProject];
 
-const addToList = ((arr) => {
+const addToList = ((arr, category) => {
+  
   arr?array=[...array, arr]:array=array
   bodyy.innerHTML=" "
   array.forEach((item, index) => {
+    item.category =category
+    bodyy.appendChild(item.card);
+    item.card.id = index;
+    console.log(arr);
+  });
+  bodyy.appendChild(addItems.addBtn)
+});
+const filterList =(arr)=>{
+  bodyy.innerHTML = " ";
+  arr.forEach((item, index) => {
     bodyy.appendChild(item.card);
     item.card.id = index;
     console.log(item.card.id);
   });
-  bodyy.appendChild(addItems.addBtn)
-});
+  bodyy.appendChild(addItems.addBtn);
+}
 
 
 Project()
+export {array,addToList, filterList}

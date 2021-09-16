@@ -56,10 +56,15 @@ export const form = ((header,heading = "", content = "", priority = "") => {
    formValues = [title.value,textInput.value,option.value]
   },"submit")
   const getFormValues=()=>(formValues)
-
+const clearInput= ()=>{
+  title.value=""
+  textInput.value=""
+  option.value=""
+}
   //! The "wrap" function is used to append all the elements in the array to the main element
   wrap(form, [h3, titleWrap, textInputWrap, optionWrap, btnSave, btnCancel, del]);
   wrap(modal, [form]);
   wrap(bodyy, [modal]);
-  return { modal, getFormValues, form };
+  
+  return { modal, getFormValues, form, clearInput };
 });
