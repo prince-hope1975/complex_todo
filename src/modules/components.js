@@ -27,7 +27,7 @@ export const form = ((header,heading = "", content = "", priority = "") => {
   form.classList.add("form");
   const h3 = newNode("h3");
   const title = newNode("input");
-  const textInput = newNode("input");
+  const textInput = newNode("text");
   const btnSave = newNode("input");
   const btnCancel = newNode("input");
   btnSave.setAttribute("type", "submit");

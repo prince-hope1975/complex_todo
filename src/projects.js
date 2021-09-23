@@ -38,7 +38,7 @@ btnWrapper.classList.add("wrap")
     const promptUser = newNode("form")
     input.setAttribute("type", "text")
     wrap(promptUser, [, input, btnWrapper])
-    promptUser.classList.add("prompt")
+    promptUser.classList.add("prompt", "visible")
     return promptUser
 })()
 

@@ -85,11 +85,9 @@ option {
 }
 
 .addBtn {
-  outline: var(--border-clr) solid;
-  outline-offset: -4px;
   background: var(--primary-clr);
   color: var(--clr);
-  border-radius: var(--border-radius);
+  border: 2px solid var(--clr);
   position: absolute;
   top: 110%;
   font-size: 1.5rem;
@@ -100,20 +98,24 @@ option {
   --primary-clr: hsl(120, 77%, 66%);
   --clr: white;
   --border-clr: white;
+  outline: var(--primary-clr) 1px solid;
 }
 @media (max-width: 575px) {
   .addBtn {
     width: 5rem;
     left: 50%;
-    margin-left: 2.5rem;
+    margin-left: -2.5rem;
   }
 }
 @media (min-width: 575px) {
   .addBtn {
     left: 50%;
-    margin: 0;
-    margin-left: -2rem;
     width: 4rem;
+  }
+}
+@media (min-width: 693px) {
+  .addBtn {
+    margin-left: -2rem;
   }
 }
 
@@ -190,7 +192,7 @@ li :hover {
   top: 0;
   right: 0;
   z-index: 2;
-  max-height: 100%;
+  max-height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, 0.2);
   padding: 8%;
@@ -208,6 +210,7 @@ li :hover {
   max-width: 90%;
   background: #fffdfd;
   margin: auto;
+  margin-bottom: 1000px;
   height: clamp(60vh, 100vh);
   display: flex;
   gap: 1em;
@@ -259,13 +262,14 @@ li :hover {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  max-width: 90%;
 }
 .projects .prompt input[type=text] {
   letter-spacing: 3px;
   margin-top: 1rem;
-  max-width: 90%;
+  max-width: 80%;
   display: block;
-  margin: auto;
+  height: 2rem;
   background: rgba(128, 128, 128, 0.1);
 }
 .projects .prompt input[type=button],
@@ -284,6 +288,14 @@ li :hover {
   width: 50px;
   left: 50%;
   margin-left: -25px;
+  color: var(--clr);
+  background: var(--primary-clr);
+  border: 2px solid var(--clr);
+}
+.projects .projectsBtn:hover {
+  --primary-clr:rgba(152, 6, 152, 0.5);
+  --clr: white;
+  outline: var(--primary-clr) 1px solid;
 }
 
 .logo {
