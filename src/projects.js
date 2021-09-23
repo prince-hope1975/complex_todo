@@ -1,4 +1,4 @@
-import { Btn, getClassNode, newNode } from "./modules/shorts";
+import { Btn, getClassNode, newNode , wrap} from "./modules/shorts";
 import { array, addToList, filterList , changeCategory} from "./index";
   const projectContainer = getClassNode("projects");
     const input = newNode("input");
@@ -29,13 +29,16 @@ const canelBtn = () => {
 
 
 const projctForm = (() => {
-
+const btnWrapper = newNode("div")
+const add= addbtn()
+const cancel= canelBtn()
+// const cancleBtnWrapper = newNode("div")
+wrap(btnWrapper,[add, cancel])
+btnWrapper.classList.add("wrap")
     const promptUser = newNode("form")
     input.setAttribute("type", "text")
-    promptUser.appendChild(input)
-    promptUser.appendChild(addbtn());
-
-    promptUser.appendChild(canelBtn())
+    wrap(promptUser, [, input, btnWrapper])
+    promptUser.classList.add("prompt")
     return promptUser
 })()
 
