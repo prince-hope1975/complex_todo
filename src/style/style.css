@@ -17,13 +17,16 @@ body {
   gap: 0 1em;
   background-image: url(https://images.unsplash.com/photo-1504297050568-910d24c426d3?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
 }
+
 body ul {
   list-style-type: none;
 }
+
 body ul h1 {
   margin: 1rem;
   text-decoration: underline;
 }
+
 @media (max-width: 575px) {
   body .body {
     margin-top: 3rem;
@@ -39,17 +42,18 @@ body .bodyy {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
+
 @media (min-width: 575px) {
   body {
     grid-template-columns: 1fr;
   }
+
   body .body {
     grid-row: span 1;
     grid-column: span 3;
     padding-bottom: 2rem;
   }
 }
-
 nav {
   padding-left: 1rem;
   background: rgba(152, 6, 152, 0.8);
@@ -58,6 +62,7 @@ nav {
   grid-column: span 2;
   width: 100%;
 }
+
 @media (min-width: 575px) {
   nav {
     width: 20rem;
@@ -66,7 +71,6 @@ nav {
     position: fixed;
   }
 }
-
 @keyframes outro {
   0% {
     transform: translate(0);
@@ -95,12 +99,14 @@ option {
   font-weight: bolder;
   transition: color 200ms ease, background 200ms ease;
 }
+
 .addBtn:hover {
   --primary-clr: hsl(120, 77%, 66%);
   --clr: white;
   --border-clr: white;
   outline: var(--primary-clr) 1px solid;
 }
+
 @media (max-width: 575px) {
   .addBtn {
     width: 5rem;
@@ -119,7 +125,6 @@ option {
     margin-left: -2rem;
   }
 }
-
 .mainContainer {
   position: relative;
   padding: 1rem;
@@ -133,20 +138,24 @@ option {
   max-width: 500px;
   width: clamp(300px, 90%, 500px);
 }
+
 .mainContainer .deleteBtn {
   border-radius: 50%;
   transition: background 500ms ease;
   transition: color 500ms ease;
 }
+
 .mainContainer .deleteBtn:hover {
   background: #d35e5e;
   color: #d3d2d2;
 }
+
 .mainContainer div select {
   position: absolute;
   right: 10px;
   top: 80%;
 }
+
 .mainContainer div button {
   padding: 0.3rem 1rem;
   text-transform: uppercase;
@@ -201,12 +210,12 @@ li :hover {
   padding: 8%;
   width: 100%;
 }
+
 @media (min-width: 575px) {
   .modal {
     width: 100%;
   }
 }
-
 .form {
   position: relative;
   width: clamp(50px, 70vw, 400px);
@@ -220,6 +229,7 @@ li :hover {
   flex-direction: column;
   padding: 1rem;
 }
+
 .form div {
   display: flex;
   flex-direction: column;
@@ -231,15 +241,18 @@ li :hover {
   transition: all 300ms ease;
   padding-bottom: 1rem;
 }
+
 .projects li {
   font-size: 1.3rem;
   margin: 0.1rem;
   text-transform: capitalize;
   font-family: "Courier New", Courier, monospace;
 }
+
 .projects li:hover {
   cursor: pointer;
 }
+
 .projects .prompt {
   display: grid;
   overflow: hidden;
@@ -255,6 +268,7 @@ li :hover {
   position: relative;
   max-height: 1000px;
 }
+
 @media (min-width: 575px) {
   .projects .prompt {
     width: 90%;
@@ -267,6 +281,7 @@ li :hover {
   align-items: center;
   max-width: 90%;
 }
+
 .projects .prompt textarea {
   letter-spacing: 3px;
   margin-top: 1rem;
@@ -276,16 +291,20 @@ li :hover {
   line-height: 1rem;
   background: rgba(128, 128, 128, 0.1);
 }
+
 .projects .prompt input[type=button],
 .projects .prompt input[type=submit] {
   border-radius: 4px;
 }
+
 .projects .prompt input[type=submit] {
   background: rgba(0, 204, 0, 0.5);
 }
+
 .projects .prompt input[type=button] {
   background: rgba(204, 41, 0, 0.5);
 }
+
 .projects .projectsBtn {
   position: absolute;
   bottom: -25px;
@@ -296,6 +315,7 @@ li :hover {
   background: var(--primary-clr);
   border: 2px solid var(--clr);
 }
+
 .projects .projectsBtn:hover {
   --primary-clr:rgba(152, 6, 152, 0.5);
   --clr: white;
@@ -330,13 +350,17 @@ option {
   margin-bottom: 0;
   transition: padding 1000ms ease-in-out, max-height 1000ms ease-in-out, transform 1000ms ease, margin-bottom 1000ms ease;
 }
+
 .visible .prompt * {
   opacity: 0;
   transition: opacity 400ms ease-in-out;
 }
+
 .visible .form {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
+
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
